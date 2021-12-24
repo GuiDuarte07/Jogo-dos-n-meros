@@ -1,4 +1,4 @@
-import { GlobalStyle } from './AppStyle'
+import { GlobalStyle } from './AppStyle';
 import GameScreen from '../components/gameScreen';
 
 function App() {

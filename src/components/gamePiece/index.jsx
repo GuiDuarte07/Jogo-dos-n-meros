@@ -1,12 +1,10 @@
-import React from 'react'
-import { Box, EmptyBox } from './style'
+import React from 'react';
+import { Box } from './style';
 
 export default function GamePiece({ number }) {
     return (
-        number !== 0 ? 
-        <Box colorScame={number} >
+        <Box colorScame={number}>
             <span>{number}</span>
-        </Box> :
-        <EmptyBox />
+        </Box>
     )
 }
