@@ -15,14 +15,14 @@ export default function DragPiece({ drag, number }) {
             event.preventDefault(); // prevent selection start (browser action)
             switch (drag) {
                 case 'LEFT':
-                    let shiftX = event.clientX //- ref.current.getBoundingClientRect().left;
+                    let left_shiftX = event.clientX //- ref.current.getBoundingClientRect().left;
                     // shiftY not needed, the thumb moves only horizontally
 
-                    document.addEventListener('mousemove', onMouseMove);
-                    document.addEventListener('mouseup', onMouseUp);
+                    document.addEventListener('mousemove', left_onMouseMove);
+                    document.addEventListener('mouseup', left_onMouseUp);
             
-                    function onMouseMove(event) {
-                        let newLeft = event.clientX - shiftX //- ref.current.getBoundingClientRect().left;
+                    function left_onMouseMove(event) {
+                        let newLeft = event.clientX - left_shiftX //- ref.current.getBoundingClientRect().left;
                         //console.log(newLeft);
                 
                         // the pointer is out of slider => lock the thumb within the bounaries
@@ -37,20 +37,20 @@ export default function DragPiece({ drag, number }) {
                         ref.current.style.left = newLeft + 'px';
                     }
 
-                    function onMouseUp() {
-                        document.removeEventListener('mouseup', onMouseUp);
-                        document.removeEventListener('mousemove', onMouseMove);
+                    function left_onMouseUp() {
+                        document.removeEventListener('mouseup', left_onMouseUp);
+                        document.removeEventListener('mousemove', left_onMouseMove);
                     }
                 break;
                 case 'TOP':
-                    let shiftY = event.clientY
+                    let top_shiftY = event.clientY
                     // shiftX not needed, the thumb moves only horizontally
 
                     document.addEventListener('mousemove', top_onMouseMove);
                     document.addEventListener('mouseup', top_onMouseUp);
 
                     function top_onMouseMove(event) {
-                        let newTop = shiftY - event.clientY //+ ref.current.getBoundingClientRect().left;
+                        let newTop = top_shiftY - event.clientY //+ ref.current.getBoundingClientRect().left;
                 
                         // the pointer is out of slider => lock the thumb within the bounaries
                         if (newTop > 0) {
@@ -65,8 +65,8 @@ export default function DragPiece({ drag, number }) {
                         ref.current.style.bottom = newTop + 'px';
                     }
                     function top_onMouseUp() {
-                        document.removeEventListener('mouseup', onMouseUp);
-                        document.removeEventListener('mousemove', onMouseMove);
+                        document.removeEventListener('mouseup', top_onMouseUp);
+                        document.removeEventListener('mousemove', top_onMouseMove);
                     }
 
                     break;
@@ -95,8 +95,8 @@ export default function DragPiece({ drag, number }) {
                     }
 
                     function right_onMouseUp() {
-                        document.removeEventListener('mouseup', onMouseUp);
-                        document.removeEventListener('mousemove', onMouseMove);
+                        document.removeEventListener('mouseup', right_onMouseUp);
+                        document.removeEventListener('mousemove', right_onMouseMove);
                     }
 
                     break;
@@ -108,23 +108,23 @@ export default function DragPiece({ drag, number }) {
                     document.addEventListener('mouseup', bottom_onMouseUp);
 
                     function bottom_onMouseMove(event) {
-                        let newTop = shiftY - event.clientY //+ ref.current.getBoundingClientRect().left;
+                        let newTop = -bottom_shiftY + event.clientY //+ ref.current.getBoundingClientRect().left;
                 
                         // the pointer is out of slider => lock the thumb within the bounaries
                         if (newTop > 0) {
                             newTop = 0;
                         }
-                        
                         let bottomEdge = ref.current.offsetHeight;
+                        console.log(bottomEdge,newTop)
                         if (newTop < -bottomEdge) {
                             newTop = -bottomEdge;
                         }
                        
-                        ref.current.style.bottom = newTop + 'px';
+                        ref.current.style.top = newTop + 'px';
                     }
                     function bottom_onMouseUp() {
-                        document.removeEventListener('mouseup', onMouseUp);
-                        document.removeEventListener('mousemove', onMouseMove);
+                        document.removeEventListener('mouseup', bottom_onMouseUp);
+                        document.removeEventListener('mousemove', bottom_onMouseMove);
                     }
                     break;
                 default:
