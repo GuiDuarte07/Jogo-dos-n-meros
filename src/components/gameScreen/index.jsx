@@ -19,7 +19,7 @@ export default function GameScreen() {
                     {game.map((obj) => {
                         console.log(game)
                         return obj.value === 0 ? <DropPiece key={0} /> :
-                        obj.drag ? <DragPiece key={obj.value} number={obj.value} /> :
+                        obj.drag ? <DragPiece drag={obj.drag} key={obj.value} number={obj.value} /> :
                         <GamePiece key={obj.value} number={obj.value} />
                     })}
                 </GameBox>

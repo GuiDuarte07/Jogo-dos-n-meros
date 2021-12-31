@@ -4,6 +4,7 @@ export const Box = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
     //border: 1px solid black;
     cursor: pointer;
     background-color: ${(props) => {
