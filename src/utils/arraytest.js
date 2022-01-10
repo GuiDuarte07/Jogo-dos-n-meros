@@ -1,5 +1,4 @@
 let range = [
-    {value: 0, drag: null},
     {value: 1, drag: null},
     {value: 2, drag: null},
     {value: 3, drag: null},
@@ -14,6 +13,7 @@ let range = [
     {value: 12, drag: null},
     {value: 13, drag: null},
     {value: 14, drag: null},
+    {value: 0, drag: null},
     {value: 15, drag: null},
 ];
 

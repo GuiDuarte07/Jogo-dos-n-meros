@@ -11,8 +11,10 @@ export default function GameScreen() {
     const [isGameOver, setIsGameOver] = useState(false);
 
     useEffect(() => {
-        dispatch({type: 'START'})
-    }, []);
+        if (!isGameOver) {
+            dispatch({type: 'START'})
+        }
+    }, [isGameOver]);
 
     useEffect(() => {
         setIsGameOver(GameOver(game));
@@ -24,7 +26,7 @@ export default function GameScreen() {
                 <Wrap>
                     <Warning>
                         <Text>Acabou o jogo!</Text>
-                        <Button>Recomeçar!</Button>
+                        <Button onClick={() => setIsGameOver(false)}>Recomeçar!</Button>
                     </Warning>
                 </Wrap>
             }

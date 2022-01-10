@@ -78,4 +78,5 @@ export const Button = styled.button`
     display: block;
     border-radius: 5px;
     border: 2px solid white;
+    cursor: pointer;
 `;
