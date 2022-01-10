@@ -9,8 +9,8 @@ export default function reducer (state, action) {
             newState = []
             for(let i = 0; i < 16; i++) {
                 let random = Math.floor(Math.random() * range.length);
-                newState.push({value: range[random], drag: null})
-                range.splice(random, 1)
+                newState.push({value: range[random], drag: null});
+                range.splice(random, 1);
             };
             
             addDrags(newState);
@@ -95,10 +95,19 @@ function addDrags(state) {
         {idx: i+1, tag: 'RIGHT'},
         {idx: i+4, tag: 'BOTTOM'}
     ];
-
+    
     allValues.forEach(y => {
         if (y.idx >= 0 && y.idx < 16) {
             state[y.idx].drag = y.tag;
         }
     });
+
+    let importNums = [0, 3, 4, 7, 8, 11, 12, 15];
+    if (importNums.includes(i)) {
+        if (i % 2) {
+            state[(i+1)%15].drag = null;
+        } else if (i !== 0) {
+            state[i-1].drag = null;
+        }
+    };
 }
