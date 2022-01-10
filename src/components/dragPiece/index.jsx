@@ -11,11 +11,14 @@ export default function DragPiece({ drag, number, dispatch }) {
     console.log('rending')
 
     useEffect(() => {
+        const elRef = ref;
+
         ref.current.ondragstart = function() {
             return false;
         };
 
         ref.current.onmousedown = function(event) {
+            console.log("Ativou onmousedown", ref.current)
             event.preventDefault(); // prevent selection start (browser action)
             switch (drag) {
                 case 'LEFT':
@@ -34,7 +37,15 @@ export default function DragPiece({ drag, number, dispatch }) {
                     throw new Error('Erro Inesperado!');
             }
         };
-    }, [drag]);
+
+        return () => {
+            console.log('a', !!elRef.current)
+            if (elRef.current){
+                elRef.current.onmousedown = null;
+                elRef.current.ondragstart = null;
+            };
+        };
+    }, [drag, dispatch]);
 
     return (
         <Box ref={ref} colorScame={number}>

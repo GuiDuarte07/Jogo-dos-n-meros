@@ -2,8 +2,10 @@ export default function rightEvent(ref, event, dispatch) {
     let right_shiftX = event.clientX //- ref.current.getBoundingClientRect().left;
     // shiftY not needed, the thumb moves only horizontally
 
-    document.addEventListener('mousemove', right_onMouseMove);
-    document.addEventListener('mouseup', () => right_onMouseUp(ref));
+    //document.addEventListener('mousemove', right_onMouseMove);
+    //document.addEventListener('mouseup', () => right_onMouseUp(ref));
+    window.onmousemove = right_onMouseMove;
+    window.onmouseup = () => right_onMouseUp(ref);
 
     function right_onMouseMove(event) {
         let newRight = event.clientX - right_shiftX;
@@ -24,14 +26,15 @@ export default function rightEvent(ref, event, dispatch) {
     }
 
     function right_onMouseUp() {
-        document.removeEventListener('mouseup', right_onMouseUp);
-        document.removeEventListener('mousemove', right_onMouseMove);
+        //document.removeEventListener('mouseup', right_onMouseUp);
+        //document.removeEventListener('mousemove', right_onMouseMove);
+        window.onmousemove = null;
+        window.onmouseup = null;
         let leftHeight = Math.abs(parseInt(ref.current.style.left));
         let refHeight = ref.current.offsetHeight*0.5;
+        ref.current.style.left = 0;
         if (leftHeight > refHeight) {
             dispatch({type: 'RIGHT'});
-        } else {
-            ref.current.style.left = 0;
         };
     }
 }

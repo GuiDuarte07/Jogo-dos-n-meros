@@ -5,6 +5,10 @@ export const Box = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
+    /* top: 0px;
+    left: 0px;
+    bottom: 0px;
+    right: 0px; */
     //border: 1px solid black;
     cursor: pointer;
     background-color: ${(props) => {

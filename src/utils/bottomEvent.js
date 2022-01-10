@@ -2,8 +2,10 @@ export default function bottomEvent(ref, event, dispatch) {
     let bottom_shiftY = event.clientY;
     // shiftX not needed, the thumb moves only horizontally
     
-    document.addEventListener('mousemove', bottom_onMouseMove);
-    document.addEventListener('mouseup', () => bottom_onMouseUp(ref, event));
+    //document.addEventListener('mousemove', bottom_onMouseMove);
+    //document.addEventListener('mouseup', () => bottom_onMouseUp(ref, event));
+    window.onmousemove = bottom_onMouseMove;
+    window.onmouseup = () => bottom_onMouseUp(ref);
     
     function bottom_onMouseMove(event) {
         let newTop = -bottom_shiftY + event.clientY; //+ ref.current.getBoundingClientRect().left;
@@ -23,14 +25,15 @@ export default function bottomEvent(ref, event, dispatch) {
     }
 
     function bottom_onMouseUp(ref, event) {
-        document.removeEventListener('mouseup', bottom_onMouseUp);
-        document.removeEventListener('mousemove', bottom_onMouseMove);
+        //document.removeEventListener('mouseup', bottom_onMouseUp);
+        //document.removeEventListener('mousemove', bottom_onMouseMove);
+        window.onmousemove = null;
+        window.onmouseup = null;
         let topHeight = Math.abs(parseInt(ref.current.style.top));
         let refHeight = ref.current.offsetHeight*0.5;
+        ref.current.style.top = 0;
         if (topHeight > refHeight) {
             dispatch({type: 'BOTTOM'});
-        } else {
-            ref.current.style.top = 0;
         };
     };
 };

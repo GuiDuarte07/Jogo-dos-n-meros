@@ -1,3 +1,5 @@
+import range from '../../utils/arraytest';
+
 export default function reducer (state, action) {
     let newState = [...state];
     let toIdx;
@@ -5,13 +7,14 @@ export default function reducer (state, action) {
 
     switch (action.type) {
         case "START":
-            let range = [...Array(16).keys()];
+            /* let range = [...Array(16).keys()];
             newState = []
             for(let i = 0; i < 16; i++) {
                 let random = Math.floor(Math.random() * range.length);
                 newState.push({value: range[random], drag: null});
                 range.splice(random, 1);
-            };
+            }; */
+            newState = range;
             
             addDrags(newState);
 
