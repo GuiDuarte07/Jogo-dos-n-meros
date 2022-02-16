@@ -37,5 +37,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/GuiDuarte07/Jogo-dos-numeros.git",
+  "author": "Guilherme Duarte <guilduarte07@gmail.com>",
+  "license": "MIT"
 }
