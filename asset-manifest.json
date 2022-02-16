@@ -1,0 +1,11 @@
+{
+  "files": {
+    "main.js": "/Jogo-dos-numeros/static/js/main.8a6eb2a6.js",
+    "static/media/VIDEOPHREAK.ttf": "/Jogo-dos-numeros/static/media/VIDEOPHREAK.9a02de9e536394ee0026.ttf",
+    "index.html": "/Jogo-dos-numeros/index.html",
+    "main.8a6eb2a6.js.map": "/Jogo-dos-numeros/static/js/main.8a6eb2a6.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.8a6eb2a6.js"
+  ]
+}
