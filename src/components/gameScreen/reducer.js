@@ -1,5 +1,3 @@
-//import range from '../../utils/arraytest';
-
 export default function reducer (state, action) {
     let newState = [...state];
     let toIdx;
@@ -88,7 +86,6 @@ function removeTags(state) {
 }
 
 function addDrags(state) {
-    console.log(state)
     let i = state.map(obj => obj.value).indexOf(0);
 
     let allValues = [

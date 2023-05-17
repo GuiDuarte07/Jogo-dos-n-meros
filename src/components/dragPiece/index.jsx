@@ -8,7 +8,6 @@ import bottomEvent from '../../utils/bottomEvent';
 export default function DragPiece({ drag, number, dispatch }) {
     const ref = useRef();
     //const initialXY = useRef([]);
-    console.log('rending')
 
     useEffect(() => {
         const elRef = ref;
@@ -18,7 +17,6 @@ export default function DragPiece({ drag, number, dispatch }) {
         };
 
         ref.current.onmousedown = function(event) {
-            console.log("Ativou onmousedown", ref.current)
             event.preventDefault(); // prevent selection start (browser action)
             switch (drag) {
                 case 'LEFT':
@@ -39,7 +37,6 @@ export default function DragPiece({ drag, number, dispatch }) {
         };
 
         return () => {
-            console.log('a', !!elRef.current)
             if (elRef.current){
                 elRef.current.onmousedown = null;
                 elRef.current.ondragstart = null;

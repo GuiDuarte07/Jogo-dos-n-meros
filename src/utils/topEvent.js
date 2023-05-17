@@ -31,7 +31,6 @@ export default function topEvent(ref, event, dispatch) {
         let bottomHeight = Math.abs(parseInt(ref.current.style.bottom));
         let refHeight = ref.current.offsetHeight*0.5;
         ref.current.style.bottom = 0;
-        console.log(bottomHeight, refHeight);
         if (bottomHeight > refHeight) {
             dispatch({type: 'TOP'});
         };

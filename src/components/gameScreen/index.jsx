@@ -33,7 +33,6 @@ export default function GameScreen() {
             <Container>
                 <GameBox>
                     {game.map((obj) => {
-                        //console.log(game)
                         return obj.value === 0 ? <DropPiece key={0} /> :
                         obj.drag ? <DragPiece dispatch={dispatch} drag={obj.drag} key={obj.value} number={obj.value} /> :
                         <GamePiece key={obj.value} number={obj.value} />
